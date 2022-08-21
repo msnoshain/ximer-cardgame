@@ -24,18 +24,18 @@ public class PokerCard : Card, IPoker
     }
 
     /// <summary>
-    /// Get the suit of the Card
+    /// Get or set the suit of the Card
     /// </summary>
-    public PokerSuit Suit => this.ParsePoker().Suit;
+    public PokerSuit Suit => ((IPoker)this).PokerSuit;
 
     /// <summary>
-    /// Get the rank of the Card
+    /// Get or set the rank of the Card
     /// </summary>
-    public PokerRank Rank => this.ParsePoker().Rank;
+    public PokerRank Rank => ((IPoker)this).PokerRank;
 
     public override string ToString()
     {
-        var info = this.ParsePoker();
+        var info = ((IPoker)this).ParsePoker();
         return $"{{ Suit={info.Suit}, Rank={info.Rank} }}";
     }
 

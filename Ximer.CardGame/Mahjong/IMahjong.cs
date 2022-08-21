@@ -53,22 +53,31 @@ public interface IMahjong
     /// Get whether the MahjongValue represents Rank - 序数牌
     /// </summary>
     bool IsRank => IsCharacter || IsDot || IsBamboo;
-}
 
-public static class IMahjongExtention
-{
-    /// <summary>
-    /// Parse the suit and rank of IMahjong
-    /// </summary>
-    /// <param name="mahjong"></param>
-    /// <returns>Suit and rank</returns>
-    /// <exception cref="ArgumentException"></exception>
-    public static (MahjongSuit Suit, MahjongRank Rank) ParseMahjong(this IMahjong mahjong) => mahjong switch
+    (MahjongSuit Suit, MahjongRank Rank) ParseMahjong() => this switch
     {
-        IMahjong { IsDragon: true, MahjongValue: < 30 } => ((MahjongSuit)(mahjong.MahjongValue / 10), MahjongRank.None),
-        IMahjong { MahjongValue: < 30 } => ((MahjongSuit)(mahjong.MahjongValue / 10 + 2), (MahjongRank)(mahjong.MahjongValue % 10)),
-        IMahjong { MahjongValue: (>= 31) and (<= 38) } => ((MahjongSuit)(mahjong.MahjongValue - 25), MahjongRank.None),
-        IMahjong { MahjongValue: (>= 41) and (<= 44) } => ((MahjongSuit)(mahjong.MahjongValue - 27), MahjongRank.None),
+        IMahjong { IsDragon: true, MahjongValue: < 30 } => ((MahjongSuit)(MahjongValue / 10), MahjongRank.None),
+        IMahjong { MahjongValue: < 30 } => ((MahjongSuit)(MahjongValue / 10 + 2), (MahjongRank)(MahjongValue % 10)),
+        IMahjong { MahjongValue: (>= 31) and (<= 38) } => ((MahjongSuit)(MahjongValue - 25), MahjongRank.None),
+        IMahjong { MahjongValue: (>= 41) and (<= 44) } => ((MahjongSuit)(MahjongValue - 27), MahjongRank.None),
+        _ => throw new ArgumentException("MahjongValue must range from 0 to 29, 31 to 38 or 41 to 44"),
+    };
+
+    MahjongSuit MahjongSuit => this switch
+    {
+        IMahjong { IsDragon: true, MahjongValue: < 30 } => (MahjongSuit)(MahjongValue / 10),
+        IMahjong { MahjongValue: < 30 } => (MahjongSuit)(MahjongValue / 10 + 2),
+        IMahjong { MahjongValue: (>= 31) and (<= 38) } => (MahjongSuit)(MahjongValue - 25),
+        IMahjong { MahjongValue: (>= 41) and (<= 44) } => (MahjongSuit)(MahjongValue - 27),
+        _ => throw new ArgumentException("MahjongValue must range from 0 to 29, 31 to 38 or 41 to 44"),
+    };
+
+    MahjongRank MahjongRank => this switch
+    {
+        IMahjong { IsDragon: true, MahjongValue: < 30 } => MahjongRank.None,
+        IMahjong { MahjongValue: < 30 } => (MahjongRank)(MahjongValue % 10),
+        IMahjong { MahjongValue: (>= 31) and (<= 38) } => MahjongRank.None,
+        IMahjong { MahjongValue: (>= 41) and (<= 44) } => MahjongRank.None,
         _ => throw new ArgumentException("MahjongValue must range from 0 to 29, 31 to 38 or 41 to 44"),
     };
 }

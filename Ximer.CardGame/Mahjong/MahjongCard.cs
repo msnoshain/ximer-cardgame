@@ -1,6 +1,4 @@
-﻿using Ximer.CardGame.Core.Poker;
-
-namespace Ximer.CardGame.Core.Mahjong;
+﻿namespace Ximer.CardGame.Core.Mahjong;
 
 /// <summary>
 /// Standard implement of Mahjong
@@ -31,16 +29,16 @@ public class MahjongCard : Card, IMahjong
     /// <summary>
     /// Get the suit of the Card
     /// </summary>
-    public MahjongSuit Suit => this.ParseMahjong().Suit;
+    public MahjongSuit Suit => ((IMahjong)this).MahjongSuit;
 
     /// <summary>
     /// Get the rank of the Card
     /// </summary>
-    public MahjongRank Rank => this.ParseMahjong().Rank;
+    public MahjongRank Rank => ((IMahjong)this).MahjongRank;
 
     public override string ToString()
     {
-        var info = this.ParseMahjong();
+        var info = ((IMahjong)this).ParseMahjong();
         return $"{{ Suit={info.Suit}, Rank={info.Rank} }}";
     }
 }
