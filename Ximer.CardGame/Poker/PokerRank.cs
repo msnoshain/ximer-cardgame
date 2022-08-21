@@ -1,9 +1,9 @@
 ﻿namespace Ximer.CardGame.Core.Poker;
 
 /// <summary>
-/// Face values of Poker
+/// Ranks of Poker
 /// </summary>
-public enum PokerFaceValue
+public enum PokerRank
 {
     None = 0,
     Ace = 1,

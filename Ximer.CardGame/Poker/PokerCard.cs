@@ -1,19 +1,13 @@
 ﻿namespace Ximer.CardGame.Core.Poker;
 
 /// <summary>
-/// GameCard that includes a PokerValue on it
+/// Standard implement of Poker
 /// </summary>
 public class PokerCard : Card, IPoker
 {
-    public PokerCard()
-    {
+    public PokerCard() { }
 
-    }
-
-    public PokerCard(byte pokerValue)
-    {
-        PokerValue = pokerValue;
-    }
+    public PokerCard(byte pokerValue) => PokerValue = pokerValue;
 
     private byte pokerValue = 0;
     /// <summary>
@@ -35,14 +29,14 @@ public class PokerCard : Card, IPoker
     public PokerSuit Suit => this.ParsePoker().Suit;
 
     /// <summary>
-    /// Get the face value of the Card
+    /// Get the rank of the Card
     /// </summary>
-    public PokerFaceValue FaceValue => this.ParsePoker().FaceValue;
+    public PokerRank Rank => this.ParsePoker().Rank;
 
     public override string ToString()
     {
         var info = this.ParsePoker();
-        return $"{{ Suit={info.Suit}, FaceValue={info.FaceValue} }}";
+        return $"{{ Suit={info.Suit}, Rank={info.Rank} }}";
     }
 
 }
