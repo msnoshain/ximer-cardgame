@@ -1,7 +1,8 @@
 ﻿namespace Ximer.CardGame.Core.Poker;
 
 /// <summary>
-/// Poker (0-12: Spade, 13-25: Heart, 26-38: Club, 39-51: Diamond, 52: Little Joker, 53: Big Joker)
+/// Defined the standard of Poker 
+/// (0-12: Spade, 13-25: Heart, 26-38: Club, 39-51: Diamond, 52: Little Joker, 53: Big Joker)
 /// </summary>
 public interface IPoker
 {

@@ -1,5 +1,8 @@
 ﻿namespace Ximer.CardGame.Core.Poker;
 
+/// <summary>
+/// GameCard that includes a PokerValue on it
+/// </summary>
 public class PokerCard : Card, IPoker
 {
     public PokerCard()
@@ -13,7 +16,9 @@ public class PokerCard : Card, IPoker
     }
 
     private byte pokerValue = 0;
-
+    /// <summary>
+    /// get or set the Poker value of the Card 
+    /// </summary>
     public byte PokerValue
     {
         get => pokerValue;
@@ -24,8 +29,14 @@ public class PokerCard : Card, IPoker
         }
     }
 
+    /// <summary>
+    /// get the suit of the Card
+    /// </summary>
     public PokerSuit Suit => this.ParsePoker().Suit;
 
+    /// <summary>
+    /// get the face value of the Card
+    /// </summary>
     public PokerFaceValue FaceValue => this.ParsePoker().FaceValue;
 
     public override string ToString()
