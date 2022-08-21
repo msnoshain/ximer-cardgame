@@ -11,6 +11,12 @@ public interface IPoker
 
 public static class IPokerExtention
 {
+    /// <summary>
+    /// Parse the suit and face value of IPoker
+    /// </summary>
+    /// <param name="poker"></param>
+    /// <returns>Suit and face value</returns>
+    /// <exception cref="ArgumentException"></exception>
     public static (PokerSuit Suit, PokerFaceValue FaceValue) ParsePoker(this IPoker poker)
     {
         return poker.PokerValue switch

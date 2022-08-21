@@ -1,5 +1,8 @@
 ﻿namespace Ximer.CardGame.Core.Poker;
 
+/// <summary>
+/// Suits of Poker 
+/// </summary>
 public enum PokerSuit
 {
     None = -1,

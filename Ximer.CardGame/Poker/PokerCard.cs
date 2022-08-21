@@ -17,7 +17,7 @@ public class PokerCard : Card, IPoker
 
     private byte pokerValue = 0;
     /// <summary>
-    /// get or set the Poker value of the Card 
+    /// Get or set the Poker value of the Card 
     /// </summary>
     public byte PokerValue
     {
@@ -30,12 +30,12 @@ public class PokerCard : Card, IPoker
     }
 
     /// <summary>
-    /// get the suit of the Card
+    /// Get the suit of the Card
     /// </summary>
     public PokerSuit Suit => this.ParsePoker().Suit;
 
     /// <summary>
-    /// get the face value of the Card
+    /// Get the face value of the Card
     /// </summary>
     public PokerFaceValue FaceValue => this.ParsePoker().FaceValue;
 

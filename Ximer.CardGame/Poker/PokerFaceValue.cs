@@ -1,5 +1,8 @@
 ﻿namespace Ximer.CardGame.Core.Poker;
 
+/// <summary>
+/// Face values of Poker
+/// </summary>
 public enum PokerFaceValue
 {
     None = 0,
